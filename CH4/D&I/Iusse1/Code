@@ -1,0 +1,36 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import style
+import seaborn as sns
+import scipy.stats as sp
+import statistics as stat
+
+
+df= pd.read_csv('CH4_Iusse1.csv')
+df.head()
+
+
+data= pd.crosstab(df['Grade'], df['Gender'])
+print(data)
+
+
+Chi_square, p_value, DF, ExptValues= sp.chi2_contingency(data, correction=True)
+print('Pearson/Chi-square: {:0.3f}'.format(Chi_square))
+print('Pearson/P-Value: {:0.3f}'.format(p_value))
+print('Pearson/Degree Of Freedom: {}'.format(DF))
+print('Expected Values:\n ', ExptValues.round(1))
+if p_value < 0.05:
+    print('There\'s Statistically Significant Relation Between Gender & Job Grade')
+else:
+    print('There\'s No enough evidence to say there\'s Relation between Gender & Job Grade')
+    
+    
+    chi_square_contribution= (ExptValues - data)**2 / ExptValues
+print('chi_square_contribution:\n{}'.format(np.round(chi_square_contribution, 3)))
+
+
+chi_square_contribution.plot.bar(edgecolor = 'black', color={'Women': '#DDA0DD', 'Men': 'blue'})
+plt.xlabel("Grade")
+plt.ylabel("chi square contribution")
+plt.legend(title='Gender');
