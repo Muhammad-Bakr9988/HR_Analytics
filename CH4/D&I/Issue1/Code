@@ -8,7 +8,7 @@ import scipy.stats as sp
 import statistics as stat
 
 # Read Dataset
-df= pd.read_csv('Dataset_Iusse1.csv')
+df= pd.read_csv('Dataset_Issue1.csv')
 df.head()
 
 # Describe & Aggregate Data
