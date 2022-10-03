@@ -34,10 +34,10 @@ plt.plot(n, sp.chi2.pdf(n, df=7))
 plt.axvline(x=cv,color='r',linestyle='dashed')
 plt.fill_between(n[n>cv], 0, sp.chi2.pdf(n, df=7)[n>cv],alpha=0.5, color='red')
 plt.text(cv+0.9, 0.015, 'Rejection region', fontsize=10)
-plt.text(cv+0.05, 0.1, 'Critical value = {} \nWhen (α) = {}\n df= 7'.format(round(cv,2), str(0.05)), fontsize=10);
+plt.text(cv+0.05, 0.1, 'Critical value = {} \nWhen (α) = {}\n df= 7'.format(round(cv,2), str(0.05)), fontsize=10)
 plt.xlabel("Chi-Square Values")
 plt.ylabel("Density")
-plt.title('Chi-Square Distribution', fontsize=14)
+plt.title('Chi-Square Distribution', fontsize=14);
 
 # Chi-Square Contribution
 chi_square_contribution= (ExptValues - data)**2 / ExptValues
